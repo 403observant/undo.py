@@ -1,0 +1,211 @@
+:root {
+--bg-color: #0a0a0f;
+--terminal-bg: rgba(28, 28, 35, 0.85);
+--text-primary: #ffffff;
+--text-secondary: #8a8a9a;
+--accent-color: #ffffff;
+--highlight-color: #4a4a8a;
+--success-color: #00ff9d;
+--glass-border: rgba(255, 255, 255, 0.12);
+--glass-shadow: rgba(0, 0, 0, 0.25);
+}
+
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
+
+body {
+background: url('https://cdn.discordapp.com/attachments/1326755475114692659/1327329461456080987/68c74d69c8070da723491e781286256d.png?ex=6782ab64&is=678159e4&hm=356244616083541cb07f954ce6ea517bb5304cf7ab1c27a086fb1cb37c8747f2&') center/cover fixed;
+font-family: 'JetBrains Mono', monospace;
+color: var(--text-primary);
+min-height: 100vh;
+display: flex;
+justify-content: center;
+align-items: center;
+margin: 0;
+padding: 20px;
+position: relative;
+overflow-x: hidden;
+}
+
+body::before {
+content: '';
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: rgba(0, 0, 0, 0.7);
+z-index: 0;
+}
+
+.terminal-container {
+position: relative;
+animation: fadeIn 1.5s ease-in-out;
+}
+
+.terminal-window {
+background: var(--terminal-bg);
+border: 1px solid var(--glass-border);
+border-radius: 15px;
+backdrop-filter: blur(20px);
+-webkit-backdrop-filter: blur(20px);
+box-shadow: 0 25px 45px var(--glass-shadow), 0 0 30px rgba(255, 0, 106, 0.1);
+padding: 20px;
+max-width: 800px;
+width: 100%;
+transition: transform 0.3s ease;
+}
+
+.terminal-window:hover {
+transform: translateY(-5px);
+}
+
+.terminal-header {
+background: linear-gradient(90deg, rgba(40, 40, 55, 0.85), rgba(28, 28, 35, 0.85));
+border-bottom: 1px solid var(--glass-border);
+padding: 15px;
+border-radius: 15px 15px 0 0;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.terminal-buttons {
+display: flex;
+gap: 10px;
+}
+
+.terminal-buttons .btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    background-color: var(--text-secondary);
+    transition: background-color 0.3s ease;
+}
+
+.terminal-buttons .btn:hover {
+    background-color: #ffffff;
+}
+
+.terminal-title {
+color: var(--text-secondary);
+font-size: 1rem;
+}
+
+.terminal-body {
+padding: 20px;
+font-size: 0.9rem;
+color: var(--text-primary);
+}
+
+.command-line {
+display: flex;
+align-items: baseline;
+margin-bottom: 15px;
+}
+
+.prompt {
+color: var(--accent-color);
+margin-right: 10px;
+}
+
+.output-content {
+text-align: center;
+background: rgba(28, 28, 35, 0.9);
+padding: 15px;
+border-radius: 10px;
+border: 1px solid var(--glass-border);
+color: var(--text-primary);
+margin-bottom: 20px;
+}
+
+.output-content p {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+.links-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+gap: 15px;
+margin-top: 10px;
+}
+
+.link-item {
+text-decoration: none;
+text-align: center;
+padding: 10px;
+color: var(--text-primary);
+background: var(--glass-bg);
+border-radius: 8px;
+border: 1px solid rgb(255 255 255);
+transition: all 0.3s ease;
+}
+
+.link-item:hover {
+background: rgb(255 255 255 / 23%);
+transform: translateY(-3px);
+color: var(--accent-color);
+}
+
+.highlight {
+color: var(--accent-color);
+font-weight: bold;
+}
+
+.highlight-green {
+color: var(--success-color);
+}
+
+.crow-symbol {
+  color: white;
+  text-shadow: 0 0 10px #fff,
+               0 0 20px #fff,
+               0 0 30px #fff;
+  animation: glow 1.5s ease-in-out infinite alternate;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 5px #fff,
+                 0 0 10px #fff,
+                 0 0 15px #fff;
+  }
+  to {
+    text-shadow: 0 0 10px #fff,
+                 0 0 20px #fff,
+                 0 0 30px #fff;
+  }
+}
+
+@keyframes fadeIn {
+from {
+    opacity: 0;
+    transform: scale(0.9);
+}
+to {
+    opacity: 1;
+    transform: scale(1);
+}
+}
+
+@media (max-width: 768px) {
+.terminal-window {
+    width: 90%;
+    padding: 15px;
+}
+
+.terminal-header {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.links-grid {
+    grid-template-columns: 1fr;
+}
+}
